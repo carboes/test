@@ -10,9 +10,9 @@ exports.config = {
     //
     user: process.env.SAUCE_USERNAME,
     key: process.env.SAUCE_ACCESS_KEY,
-    //sauceConnect: true,
-    host: 'localhost',
-    port: 4723,
+    sauceConnect: true,
+    //host: 'localhost',
+    //port: 4723,
     
     //
     // ==================
@@ -67,7 +67,8 @@ exports.config = {
         platformName: 'Android',
         name: 'LottoNZ SIT',
         //app: path.join(__dirname, 'mylotto-sit.apk'),
-        app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk',
+        //app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk',
+        app: 'sauce-storage:mylotto-sit.apk',
         appActivity: 'co.nz.mylotto.MainActivity'
     
     }],
