@@ -8,8 +8,8 @@
     "url": "https://github.com/lotto-nz/lotot-mob-auto.git"
   },
   "scripts": {
-    "test": "mocha --require should index.js",
-    "simple": "node simple-appium-android.js"
+    "test-wd": "mocha --require should wd/index.js",
+    "test-basic": "node basic/simple-appium-android.js"
   },
   "author": "Carl Peterken",
   "license": "ISC",

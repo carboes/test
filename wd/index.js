@@ -31,7 +31,7 @@ describe("My Lotto Android tests", function () {
 				platformVersion: '4.4.4',
 				platformName: 'Android',
 				name: 'LottoNZ SIT',
-				app: path.join(__dirname, 'mylotto-sit.apk'),
+				app: path.join(__dirname, '../apps/mylotto-sit.apk'),
 				appActivity: 'co.nz.mylotto.MainActivity'
 			};
 		}
