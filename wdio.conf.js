@@ -24,7 +24,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './wdio/specs/**/*.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -60,15 +60,15 @@ exports.config = {
         //
         //browserName: 'firefox'
     
-        browserName: '',
+        /*browserName: '',
         appiumVersion: '1.5.3',
         deviceName: 'Samsung Galaxy S4',
         platformVersion: '4.4.4',
         platformName: 'Android',
         name: 'LottoNZ SIT',
         //app: path.join(__dirname, 'mylotto-sit.apk'),
-        app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk',
-        appActivity: 'co.nz.mylotto.MainActivity'
+        app: '/users/cpeterken/mylotto/lotto-mob-auto/mylotto-sit.apk',
+        appActivity: 'co.nz.mylotto.MainActivity'*/
     
     }],
     //
@@ -127,7 +127,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
+    /*services: ['appium'],
     appium: {
         args: {
             address: 'localhost',
@@ -140,9 +140,9 @@ exports.config = {
             deviceName: 'Samsung Galaxy S4',
             nativeInstrumentsLib: true,
             isolateSimDevice: true,
-            //app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk'
+            app: '/users/cpeterken/mylotto/lotto-mob-auto/mylotto-sit.apk'
         }
-    },
+    },*/
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: http://webdriver.io/guide/testrunner/frameworks.html

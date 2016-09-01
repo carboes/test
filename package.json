@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test-wd": "mocha --require should wd/index.js",
-    "test-basic": "node basic/simple-appium-android.js"
+    "test-basic": "node basic/simple-appium-android.js",
+    "test-wdio": "node_modules/webdriverio/bin/wdio wdio/wdio.conf.js",
+    "test-sa": "node_modules/webdriverio/bin/wdio wdio/standalone.js"
   },
   "author": "Carl Peterken",
   "license": "ISC",

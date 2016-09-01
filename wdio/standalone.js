@@ -16,7 +16,8 @@ var options = {
 
 var client = webdriverio.remote(options);
 client.init().swipeLeft().end()
-console.log('x');
+
+
 /*client
     .init()
     .url('https://duckduckgo.com/')
