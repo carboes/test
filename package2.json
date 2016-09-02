@@ -16,7 +16,11 @@
   "author": "Carl Peterken",
   "license": "ISC",
   "dependencies": {
+    //"code": "^3.0.2",
     "mocha": "^3.0.2",
+    //"should": "^11.1.0",
+    //"wd": "^0.4.0",
+    //"wd-android": "^0.1.1"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.12.0",
@@ -24,6 +28,8 @@
     "babel-preset-es2015-node6": "^0.3.0",
     "babel-register": "^6.14.0",
     "babel-runtime": "^6.11.6",
+    //"wdio-appium-service": "^0.2.0",
     "wdio-mocha-framework": "^0.4.0",
+    //"wdio-sauce-service": "^0.2.4"
   }
 }
