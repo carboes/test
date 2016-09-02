@@ -13,19 +13,20 @@ describe('App test', function () {
     })
 
     it('Swipe through first five intro screens and see "Start playing" button', () => {
-        browser.pause(1000)
+        //browser.pause(1000)
         for (var i = 1; i <= 5; i++) {
-            IntroScreen.page(i).swipeLeft(400)
-            browser.pause(500)
+            IntroScreen.page(i).waitForVisible()
+            IntroScreen.page(i).swipeLeft(800)
         }
-        var buttonText = IntroScreen.buttonText.getText().toLowerCase().trim()
-        expect(buttonText).to.equal('start playing')
+        IntroScreen.buttonText.waitForVisible()
+        var buttonText = IntroScreen.buttonText.getText()
+        expect(buttonText.toLowerCase().trim()).to.equal('start playing')
     
     })
 
     it('After "Start playing" click expect Navbar to be visible', () => {
+        IntroScreen.button.waitForVisible()
         IntroScreen.button.click()
-        browser.pause(200)
         expect(NavBar.homepageLink.isVisible()).to.be.true
     })
 

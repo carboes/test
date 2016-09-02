@@ -8,8 +8,10 @@ exports.config = {
     // should work too though). These services define specific user and key (or access key)
     // values you need to put in here in order to connect to these services.
     //
-    user: 'venvarikuppala',//process.env.SAUCE_USERNAME,
-    key: '33c1fbce-0e3c-4c16-a502-f0f07a331483',//process.env.SAUCE_ACCESS_KEY,
+    user: process.env.SAUCE_USERNAME,
+        //'venvarikuppala',
+    key: process.env.SAUCE_ACCESS_KEY,
+        //'33c1fbce-0e3c-4c16-a502-f0f07a331483',//
     sauceConnect: true,
     host: 'ondemand.saucelabs.com',
     port: 80,

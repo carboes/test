@@ -1,0 +1,20 @@
+test:
+  pre: 
+    #Android
+    - mkdir -p $HOME/.gradle
+    - mv gradle.properties.user $HOME/.gradle/gradle.properties:
+        pwd: android
+    - echo "MYAPP_RELEASE_STORE_PASSWORD=$ANDROID_STORE_PASS" >> $HOME/.gradle/gradle.properties
+    - echo "MYAPP_RELEASE_KEY_PASSWORD=$ANDROID_KEY_PASS" >> $HOME/.gradle/gradle.properties
+    - ./gradlew assembleSit:
+        pwd: android
+    - "curl -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY -X POST http://saucelabs.com/rest/v1/storage/$SAUCE_USERNAME/LottoNZ-SIT-android.zip?overwrite=true -H 'Content-Type: application/octet-stream' --data-binary @android/app/build/outputs/apk/mylotto-sit.apk"
+    #iOS
+    ##TODO
+  override:
+    - mkdir $HOME/automation
+    - cd $HOME/automation
+    - git clone https://github.com/lotto-nz/lotto-mob-auto
+    - cd lotto-mob-auto
+    - npm install
+    - SAUCE_USERNAME=venvarikuppala SAUCE_ACCESS_KEY=33c1fbce-0e3c-4c16-a502-f0f07a331483 npm run sauce
