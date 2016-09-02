@@ -28,7 +28,7 @@
     "babel-preset-es2015-node6": "^0.3.0",
     "babel-register": "^6.14.0",
     "babel-runtime": "^6.11.6",
-    //"wdio-appium-service": "^0.2.0",
+
     "wdio-mocha-framework": "^0.4.0",
     "wdio-sauce-service": "^0.2.4"
   }
