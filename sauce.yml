@@ -1,4 +1,4 @@
 ---
   language: "javascript"
   framework: "webdriverio"
-  configPath: "wdio/wdio.conf.js"
+  configPath: "wdio/wdio.conf.sauce.js"
