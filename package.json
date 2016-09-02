@@ -8,10 +8,8 @@
     "url": "https://github.com/lotto-nz/lotot-mob-auto.git"
   },
   "scripts": {
-    "test-wd": "mocha --require should wd/index.js",
-    "test-basic": "node basic/simple-appium-android.js",
-    "test-wdio": "node_modules/webdriverio/bin/wdio wdio/wdio.conf.local.js",
-    "test-sa": "node_modules/webdriverio/bin/wdio wdio/standalone.js"
+    "local": "node_modules/webdriverio/bin/wdio wdio.conf.local.js",
+    "sauce": "node_modules/webdriverio/bin/wdio wdio.conf.sauce.js"
   },
   "author": "Carl Peterken",
   "license": "ISC",
@@ -24,6 +22,8 @@
     "babel-preset-es2015-node6": "^0.3.0",
     "babel-register": "^6.14.0",
     "babel-runtime": "^6.11.6",
-    "wdio-mocha-framework": "^0.4.0"
+    "wdio-appium-service": "^0.2.0",
+    "wdio-mocha-framework": "^0.4.0",
+    "wdio-sauce-service": "^0.2.4"
   }
 }

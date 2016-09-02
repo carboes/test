@@ -9,14 +9,14 @@ describe('App test', function () {
     this.timeout(99999999)
 
     before(() => {
-        //
+        // something here.
     })
 
     it('Swipe through first five intro screens and see "Start playing" button', () => {
         browser.pause(1000)
         for (var i = 1; i <= 5; i++) {
             IntroScreen.page(i).swipeLeft(400)
-            browser.pause(100)
+            browser.pause(500)
         }
         var buttonText = IntroScreen.buttonText.getText().toLowerCase().trim()
         expect(buttonText).to.equal('start playing')

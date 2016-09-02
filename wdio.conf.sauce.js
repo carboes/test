@@ -8,11 +8,11 @@ exports.config = {
     // should work too though). These services define specific user and key (or access key)
     // values you need to put in here in order to connect to these services.
     //
-    /*user: process.env.SAUCE_USERNAME,
-    key: process.env.SAUCE_ACCESS_KEY,
-    sauceConnect: true,*/
-    host: 'localhost',
-    port: 4723,
+    user: 'venvarikuppala',//process.env.SAUCE_USERNAME,
+    key: '33c1fbce-0e3c-4c16-a502-f0f07a331483',//process.env.SAUCE_ACCESS_KEY,
+    sauceConnect: true,
+    host: 'ondemand.saucelabs.com',
+    port: 80,
     
     //
     // ==================
@@ -24,7 +24,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './wdio/specs/**/*.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -56,19 +56,13 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instance available you can make sure that not more than
         // 5 instance gets started at a time.
-        //maxInstances: 5,
-        //
-        //browserName: 'firefox'
-    
         browserName: '',
         appiumVersion: '1.5.3',
-        deviceName: 'Samsung Galaxy S4',
-        platformVersion: '4.4.4',
+        deviceName: 'Samsung Galaxy S4 Emulator',
+        platformVersion: '4.4',
         platformName: 'Android',
         name: 'LottoNZ SIT',
-        //app: path.join(__dirname, 'mylotto-sit.apk'),
-        app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk',
-        //app: 'sauce-storage:mylotto-sit.apk',
+        app: 'sauce-storage:mylotto-sit.apk',
         appActivity: 'co.nz.mylotto.MainActivity'
     
     }],
@@ -141,7 +135,6 @@ exports.config = {
             deviceName: 'Samsung Galaxy S4',
             nativeInstrumentsLib: true,
             isolateSimDevice: true,
-            //app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk'
         }
     },
     // Framework you want to run your specs with.
@@ -162,7 +155,6 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd',
         compilers: ['js:babel-register'],
-        //require: ['./test/helpers/common.js']
     },
     //
     // =====

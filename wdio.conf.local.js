@@ -1,3 +1,5 @@
+var path = require('path')
+
 exports.config = {
     
     //
@@ -8,11 +10,8 @@ exports.config = {
     // should work too though). These services define specific user and key (or access key)
     // values you need to put in here in order to connect to these services.
     //
-    user: process.env.SAUCE_USERNAME,
-    key: process.env.SAUCE_ACCESS_KEY,
-    //sauceConnect: true,*/
-    //host: 'localhost',
-    //port: 4723,
+    host: 'localhost',
+    port: 4723,
     
     //
     // ==================
@@ -24,7 +23,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './wdio/specs/**/*.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -55,20 +54,14 @@ exports.config = {
     capabilities: [{
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instance available you can make sure that not more than
-        // 5 instance gets started at a time.
-        //maxInstances: 5,
-        //
-        //browserName: 'firefox'
-    
+        // 5 instance gets started at a time.   
         browserName: '',
         appiumVersion: '1.5.3',
         deviceName: 'Samsung Galaxy S4',
         platformVersion: '4.4.4',
         platformName: 'Android',
         name: 'LottoNZ SIT',
-        //app: path.join(__dirname, 'mylotto-sit.apk'),
-        //app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk',
-        app: 'sauce-storage:mylotto-sit.apk',
+        app: path.join(__dirname, 'apps/mylotto-sit.apk'),
         appActivity: 'co.nz.mylotto.MainActivity'
     
     }],
@@ -128,7 +121,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    /*services: ['appium'],
+    services: ['appium'],
     appium: {
         args: {
             address: 'localhost',
@@ -141,7 +134,6 @@ exports.config = {
             deviceName: 'Samsung Galaxy S4',
             nativeInstrumentsLib: true,
             isolateSimDevice: true,
-            //app: '/users/cpeterken/mylotto/lotto-mob-auto/apps/mylotto-sit.apk'
         }
     },
     // Framework you want to run your specs with.
@@ -161,8 +153,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        compilers: ['js:babel-register'],
-        //require: ['./test/helpers/common.js']
+        compilers: ['js:babel-register']
     },
     //
     // =====
