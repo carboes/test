@@ -9,8 +9,10 @@ describe('App test', function () {
     this.timeout(99999999)
 
     before(() => {
-        //Wait 3 seconds to accept push notifications etc
-        //browser.pause(2000)
+        // browser.pause(2000)
+        // browser.getViewportSize('width', function(size) {
+        //     expect(size).to.be.true
+        // })
     })
 
     // it('Check if intro screen swiper visible', () => {
@@ -66,5 +68,26 @@ describe('App test', function () {
         IntroScreen.button.click()
         expect(NavBar.homepageLink.isVisible()).to.be.true
     })
+
+    // it('x', () => {
+    //     browser.swipeLeft(1)
+    //     browser.touchMultiPerform([{
+    //         action: 'press',
+    //         options: {
+    //             x: 300,
+    //             y: 200
+    //         }
+    //     }, {
+    //         action: 'moveTo',
+    //         options: {
+    //             x: 100,
+    //             y: 200
+    //         }
+    //     }, {
+    //         action: 'release'
+    //     }]);
+
+    //     browser.pause(1000)
+    // })
 
 })
