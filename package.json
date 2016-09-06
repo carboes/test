@@ -10,7 +10,7 @@
   "scripts": {
     "local": "node_modules/webdriverio/bin/wdio wdio.conf.local.js",
     "local-ios": "IOS=true node_modules/webdriverio/bin/wdio wdio.conf.local.js",
-    "sauce": "SAUCE_USERNAME=venvarikuppala SAUCE_ACCESS_KEY=33c1fbce-0e3c-4c16-a502-f0f07a331483 node_modules/webdriverio/bin/wdio wdio.conf.sauce.js"
+    "sauce": "node_modules/webdriverio/bin/wdio wdio.conf.sauce.js"
   },
   "author": "Carl Peterken",
   "license": "ISC",

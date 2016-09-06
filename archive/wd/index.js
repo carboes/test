@@ -1,9 +1,9 @@
 "use strict";
 
-var wdVanilla = require("wd");
-var WebDriverAndroid = require('wd-android');
+var wd = require("wd");
+/*var WebDriverAndroid = require('wd-android');
 var wd = new WebDriverAndroid(wdVanilla);
-var wd;
+var wd;*/
 
 var path = require('path');
 
@@ -18,13 +18,24 @@ describe("My Lotto Android tests", function () {
 	before(function () {
 		var desired;
 
-		if (!process.env.npm_package_config_sauce) {
+		//if (!process.env.npm_package_config_sauce) {
 			driver = wd.promiseChainRemote({
 				host: 'localhost',
 				port: 4723
 			});
 
 			var desired = {
+				browserName: '',
+		        appiumVersion: '1.5.3',
+		        deviceName: 'iPhone 6',
+		        platformVersion: '9.3',
+		        platformName: 'iOS',
+		        name: 'LottoNZ SIT',
+		        app: path.join(__dirname, '../../apps/LottoNZ-SIT-ios.zip'),
+		        autoAcceptAlerts: true
+			}
+
+			/*var desired = {
 				browserName: '',
 				appiumVersion: '1.5.3',
 				deviceName: 'Samsung Galaxy S4',
@@ -33,9 +44,9 @@ describe("My Lotto Android tests", function () {
 				name: 'LottoNZ SIT',
 				app: path.join(__dirname, '../apps/mylotto-sit.apk'),
 				appActivity: 'co.nz.mylotto.MainActivity'
-			};
-		}
-		else {
+			};*/
+		//}
+		/*else {
 			driver = wd.promiseChainRemote({
 				host: "ondemand.saucelabs.com",
 				port: 80,
@@ -55,7 +66,7 @@ describe("My Lotto Android tests", function () {
 			}
 		}
 
-		console.log(process.env);
+		console.log(process.env);*/
 
 		return driver.init(desired).setImplicitWaitTimeout(5000);
 	
@@ -76,7 +87,23 @@ describe("My Lotto Android tests", function () {
 
 	it("should swipe through first screens and click 'Start playing'", function () {
 
-		var swipeAndWait = function(driver) {
+		return function(opts) {
+            var action = new wd.TouchAction(this);
+            action
+                .press({
+                    x: opts.startX,
+                    y: opts.startY
+                })
+                .wait(opts.duration)
+                .moveTo({
+                    x: opts.endX,
+                    y: opts.endY
+                })
+                .release();
+
+            return action.perform();
+        }
+		/*var swipeAndWait = function(driver) {
 			return driver.swipe({
 				startX: 0.9,
 				startY: 0.5,
@@ -93,9 +120,9 @@ describe("My Lotto Android tests", function () {
 		driver = swipeAndWait(driver);
 		driver = swipeAndWait(driver);
 		driver = swipeAndWait(driver);
-		driver = driver.elementByAccessibilityId('introScreenButton');
+		//driver = driver.elementByAccessibilityId('introScreenButton');
 		driver.shouldBeButtonElement();
-		driver = driver.click().sleep(2000);
+		driver = driver.click().sleep(2000);*/
 
 		return driver;
 	});
