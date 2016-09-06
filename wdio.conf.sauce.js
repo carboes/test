@@ -66,7 +66,6 @@ exports.config = {
         name: 'LottoNZ SIT',
         app: 'sauce-storage:mylotto-sit.apk',
         appActivity: 'co.nz.mylotto.MainActivity'
-    
     }],
     //
     // ===================
@@ -124,7 +123,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
+    /*services: ['appium'],
     appium: {
         args: {
             address: 'localhost',
@@ -138,7 +137,7 @@ exports.config = {
             nativeInstrumentsLib: true,
             isolateSimDevice: true,
         }
-    },
+    },*/
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: http://webdriver.io/guide/testrunner/frameworks.html

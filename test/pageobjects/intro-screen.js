@@ -1,5 +1,11 @@
 var introScreen = Object.create(new Object(), {
 
+    swiper: {
+        get() {
+            return browser.element('~introScreenSwiper')
+        }
+    },
+
     page: {
         value: function(pageNumber) {
             return browser.element('~introScreenPage'+pageNumber)

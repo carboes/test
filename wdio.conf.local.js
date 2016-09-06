@@ -1,4 +1,5 @@
-var path = require('path')
+var configLocal = require('./config-local')
+var desiredCaps = (process.env.IOS ? configLocal.ios : configLocal.android);
 
 exports.config = {
     
@@ -51,7 +52,8 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
+    capabilities: [desiredCaps],
+    /*{
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instance available you can make sure that not more than
         // 5 instance gets started at a time.   
@@ -63,8 +65,17 @@ exports.config = {
         name: 'LottoNZ SIT',
         app: path.join(__dirname, 'apps/mylotto-sit.apk'),
         appActivity: 'co.nz.mylotto.MainActivity'
-    
-    }],
+    }, {
+        browserName: '',
+        appiumVersion: '1.5.3',
+        deviceName: 'iPhone 6',
+        platformVersion: '9.3',
+        platformName: 'iOS',
+        name: 'LottoNZ SIT',
+        app: path.join(__dirname, 'apps/LottoNZ-SIT-ios.zip'),
+        autoAcceptAlerts: true
+        //appActivity: 'co.nz.mylotto.MainActivity'
+    }*/
     //
     // ===================
     // Test Configurations
@@ -128,12 +139,13 @@ exports.config = {
             commandTimeout: '7200',
             sessionOverride: true,
             debugLogSpacing: true,
-            platformVersion: '4.4',
-            platformName: 'Android',
             showIosLog: true,
-            deviceName: 'Samsung Galaxy S4',
             nativeInstrumentsLib: true,
             isolateSimDevice: true,
+            port: 4723,
+            deviceName: desiredCaps.deviceName,
+            platformVersion: desiredCaps.platformVersion,
+            platformName: desiredCaps.platformName
         }
     },
     // Framework you want to run your specs with.
