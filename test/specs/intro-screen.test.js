@@ -3,91 +3,102 @@ var {expect} = require('chai')
 
 var IntroScreen = require('../pageobjects/intro-screen')
 var NavBar = require('../pageobjects/navbar')
+NavBar.GameMenu = require('../pageobjects/navbar.game-menu')
 
-describe('App test', function () {
+describe('Lotto mobile application test', function () {
 
     this.timeout(99999999)
 
-    before(() => {
-        // browser.pause(2000)
-        // browser.getViewportSize('width', function(size) {
-        //     expect(size).to.be.true
-        // })
+    describe('Swipe through intro screens', function() {
+
+        it('Swipe through first five intro screens and see "Start playing" button', () => {
+            for (var i = 1; i <= 5; i++) {
+                IntroScreen.page(i).waitForVisible()
+                IntroScreen.page(i).swipeLeft(800)
+                browser.pause(1000)
+            }
+            IntroScreen.buttonText.waitForVisible()
+            var buttonText = IntroScreen.buttonText.getText()
+            expect(buttonText.toLowerCase().trim()).to.equal('start playing')
+        
+        })
+
+        it('After "Start playing" click expect Navbar to be visible', () => {
+            IntroScreen.button.waitForVisible()
+            IntroScreen.button.click()
+            expect(NavBar.homepageLink.isVisible()).to.be.true
+        })
+
     })
 
-    // it('Check if intro screen swiper visible', () => {
-    //     /*browser.swipeLeft('~introScreenSwiper',0.5,0.5,800)
-    //     browser.swipeLeft('~introScreenSwiper',0,400,800)
-    //     browser.swipeLeft('~introScreenSwiper',0,400,800)
-    //     browser.swipeLeft('~introScreenSwiper',0,400,800)
-    //     browser.swipeLeft('~introScreenSwiper',0,400,800)*/
-    //     IntroScreen.swiper.swipeLeft(400)
-    //     IntroScreen.swiper.swipeLeft(400)
-    //     IntroScreen.swiper.swipeLeft(400)
-    //     IntroScreen.swiper.swipeLeft(400)
-    //     //IntroScreen.swiper.swipeLeft(400)
 
-    //     /*browser.touchMultiPerform([{
-    //         action: 'press',
-    //         options: {
-    //             x: 400,
-    //             y: 500,
-    //             duration: 500
-    //         }
-    //     }, {
-    //         action: 'moveTo',
-    //         options: {
-    //             x: 100,
-    //             y: 500,
-    //             duration: 500
-    //         }
-    //     }, {
-    //         action: 'release'
-    //     }])*/
+    describe('Base navigation bar', function() {
 
-    //     expect(IntroScreen.swiper.isVisible()).to.be.true
-    // })
+        before(() => {
+            //Make sure intro screen is hidden.
+            if (IntroScreen.skipButton.isVisible()) {
+                IntroScreen.skipButton.click()
+            }
 
-    it('Swipe through first five intro screens and see "Start playing" button', () => {
-        //IntroScreen.swiper.swipeLeft(400)
-        //expect(browser.isVisible('~introScreenImage1')).to.be.true
+            //Make sure game menu is closed
+            if (!NavBar.openGameMenu.isVisible()) {
+                NavBar.closeGameMenu.click()
+            }
+        })
 
-        for (var i = 1; i <= 5; i++) {
-            IntroScreen.page(i).waitForVisible()
-            IntroScreen.page(i).swipeLeft(800)
-            browser.pause(1000)
-        }
-        IntroScreen.buttonText.waitForVisible()
-        var buttonText = IntroScreen.buttonText.getText()
-        expect(buttonText.toLowerCase().trim()).to.equal('start playing')
-    
+
+        it('Check if game menu, results, scan, login buttons show for un-logged-in user', () => {
+            expect(NavBar.homepageLink.isVisible()).to.be.true
+            expect(NavBar.openGameMenu.isVisible()).to.be.true
+            expect(NavBar.resultsButton.isVisible()).to.be.true
+            expect(NavBar.scanButton.isVisible()).to.be.true
+            expect(NavBar.loginButton.isVisible()).to.be.true
+        })
+
+        it('On open Game Menu, show close game menu button', () => {
+            //IntroScreen.skipButton.waitForVisible()
+            //IntroScreen.skipButton.click()
+
+            NavBar.openGameMenu.waitForVisible()
+            NavBar.openGameMenu.click()
+            expect(NavBar.closeGameMenu.isVisible()).to.be.true
+        })
+
+        /*it('On close Game Menu, show open game menu button', () => {
+            NavBar.closeGameMenu.waitForVisible()
+            NavBar.closeGameMenu.click()
+            expect(NavBar.openGameMenu.isVisible()).to.be.true
+        })*/
+
     })
 
-    it('After "Start playing" click expect Navbar to be visible', () => {
-        IntroScreen.button.waitForVisible()
-        IntroScreen.button.click()
-        expect(NavBar.homepageLink.isVisible()).to.be.true
+    describe('Game menu navigation bar', function() {
+
+        before( () => {
+            if (!NavBar.openGameMenu.isVisible()) {
+                NavBar.openGameMenu.click()
+            }
+        })
+
+        it('blah', () => {
+            NavBar.GameMenu.lottoPowerball.isVisible()
+            NavBar.GameMenu.scanTicket.isVisible()
+            NavBar.GameMenu.notificationSettings.isVisible()
+            NavBar.GameMenu.storeFinder.isVisible()
+            NavBar.GameMenu.faqs.isVisible()
+            NavBar.GameMenu.playResponsibly.isVisible()
+
+            NavBar.GameMenu.legal.isVisible()
+            NavBar.GameMenu.contactUs.isVisible()
+            NavBar.GameMenu.fullsite.isVisible()
+        })
+
+        it('On close Game Menu, show open game menu button', () => {
+            NavBar.closeGameMenu.waitForVisible()
+            NavBar.closeGameMenu.click()
+            expect(NavBar.openGameMenu.isVisible()).to.be.true
+        })
+
     })
-
-    // it('x', () => {
-    //     browser.swipeLeft(1)
-    //     browser.touchMultiPerform([{
-    //         action: 'press',
-    //         options: {
-    //             x: 300,
-    //             y: 200
-    //         }
-    //     }, {
-    //         action: 'moveTo',
-    //         options: {
-    //             x: 100,
-    //             y: 200
-    //         }
-    //     }, {
-    //         action: 'release'
-    //     }]);
-
-    //     browser.pause(1000)
-    // })
 
 })

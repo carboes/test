@@ -22,6 +22,12 @@ var introScreen = Object.create(new Object(), {
         get() {
             return browser.element('~introScreenButtonText')
         }
+    },
+
+    skipButton: {
+        get() {
+            return browser.element('~introScreenSkipButton')
+        }
     }
 
 });

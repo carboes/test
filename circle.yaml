@@ -20,7 +20,7 @@ test:
     - cd lotto-mob-auto
     - npm install
     - SAUCE_USERNAME=venvarikuppala SAUCE_ACCESS_KEY=33c1fbce-0e3c-4c16-a502-f0f07a331483 npm run sauce
-
+zip -r $HOME/LottoNZ-SIT-ios.zip ~/dist/LottoNZ.app
 
     #
     pwd: lotto-mob-auto
