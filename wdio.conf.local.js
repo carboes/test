@@ -24,8 +24,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        process.env.IOS ? './test/specs/**/*.test.ios.js' : './test/specs/**/*.test.android.js',
-        './test/specs/**/*.test.js',
+        process.env.IOS ? './test/ios-specs/**/*.test.js' : './test/specs/**/*.test.js'
     ],
     // Patterns to exclude.
     exclude: [
