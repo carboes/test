@@ -8,9 +8,9 @@ exports.config = {
     // should work too though). These services define specific user and key (or access key)
     // values you need to put in here in order to connect to these services.
     //
-    //user: process.env.SAUCE_USERNAME,
-    //key: process.env.SAUCE_ACCESS_KEY,
-    //sauceConnect: true,
+    user: process.env.SAUCE_USERNAME,
+    key: process.env.SAUCE_ACCESS_KEY,
+    sauceConnect: true,
     host: 'ondemand.saucelabs.com',
     port: 80,
     
@@ -62,7 +62,7 @@ exports.config = {
         platformVersion: '4.4',
         platformName: 'Android',
         name: 'LottoNZ SIT',
-        app: 'sauce-storage:mylotto-sit.apk',
+        app: 'sauce-storage:LottoNZ-SIT-android.zip',
         appActivity: 'co.nz.mylotto.MainActivity'
     }],
     //
