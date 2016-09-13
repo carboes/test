@@ -6,8 +6,7 @@ cd ../mobile-app \
 && echo "MYAPP_RELEASE_STORE_PASSWORD=$ANDROID_STORE_PASS" >> $HOME/.gradle/gradle.properties \
 && echo "MYAPP_RELEASE_KEY_PASSWORD=$ANDROID_KEY_PASS" >> $HOME/.gradle/gradle.properties \
 && ./gradlew assembleSit \
-&& mv ./app/build/outputs/apk/mylotto-sit.apk ../../lotto-mob-auto/app
-
+&& mv ./app/build/outputs/apk/mylotto-sit.apk ../../lotto-mob-auto/app \
 && react-native bundle --entry-file index.ios.js --platform ios --bundle-output main.jsbundle --reset-cache \
 && cd ios/pods \
 && xcodebuild CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -sdk iphonesimulator -destination "platform=iOS Simulator,OS=9.3,name=iPhone 6" -scheme "Pods-LottoNZ" CONFIGURATION_BUILD_DIR="~/dist/" build \
