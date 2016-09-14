@@ -4,29 +4,23 @@ var {expect} = require('chai')
 var IntroScreen = require('../pageobjects/intro-screen')
 var NavBar = require('../pageobjects/navbar')
 
-describe('App test', function () {
+describe('Intro screen test', function () {
 
     this.timeout(99999999)
 
-    it('1 Test skip intro screen to reveal homepage link', () => {
-        IntroScreen.skipButton.waitForVisible()
-        IntroScreen.skipButton.click()
+    before(() => {
+        if (IntroScreen.skipButton.isVisible()) {
+            IntroScreen.skipButton.click()
+        }
+
+    })
+
+    it('Check if game menu, results, scan, login buttons show for un-logged-in user', () => {
         expect(NavBar.homepageLink.isVisible()).to.be.true
-    })
-
-    it('2 On open Game Menu, show close game menu button', () => {
-        IntroScreen.skipButton.waitForVisible()
-        IntroScreen.skipButton.click()
-
-        NavBar.openGameMenu.waitForVisible()
-        NavBar.openGameMenu.click()
-        expect(NavBar.closeGameMenu.isVisible()).to.be.true
-    })
-
-    it('3 On close Game Menu, show open game menu button', () => {
-        NavBar.closeGameMenu.waitForVisible()
-        NavBar.closeGameMenu.click()
         expect(NavBar.openGameMenu.isVisible()).to.be.true
+        expect(NavBar.resultsButton.isVisible()).to.be.true
+        expect(NavBar.scanButton.isVisible()).to.be.true
+        expect(NavBar.loginButton.isVisible()).to.be.true
     })
 
 })
